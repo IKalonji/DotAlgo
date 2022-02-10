@@ -158,7 +158,7 @@ ADDITIONAL ENDPOINTS WILL BE PROVIDED FOR ALPHA RELEASE
 
 [Video Demo](https://www.youtube.com/watch?v=GOsnMrG4cBE)
 
-[![DEMO](https://img.youtube/vi/GOsnMrG4cBE/0.jpg)](https://www.youtube.com/watch?v=GOsnMrG4cBE)
+[![DEMO](https://img.youtube.com/vi/GOsnMrG4cBE/0.jpg)](https://www.youtube.com/watch?v=GOsnMrG4cBE)
 
 
 _Please refer to the [Documentation](https://github.com/IKalonji/DotAlgo/blob/main/README.md)_
