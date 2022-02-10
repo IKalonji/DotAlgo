@@ -16,8 +16,8 @@ public class EndpointHandler {
     public final String resolve = "/resolve/{domain}";
     public final String allDomains = "/all";
     public final String available = "/available/{domain}";
-
     public final String account = "/account";
+
     private Indexer domainIndex;
     private CreateDomainAsset domainNFT;
     private CreateAlgoAccount createAlgoAccount;
@@ -41,19 +41,21 @@ public class EndpointHandler {
     public void CreateAlgoDomain(Context context) throws Exception {
         String domain = context.pathParam("domain").toLowerCase();
         String body = context.body();
+        System.out.println(body);
         JSONParser parser = new JSONParser();
         JSONObject jsonBody =(JSONObject) parser.parse(body);
         String seed = (String) jsonBody.get("account_mneumonic");
+        System.out.println(seed);
         Account account = this.createAlgoAccount.createAccountFromSeed(seed);
 
         JSONObject response = new JSONObject();
 
         if (this.domainIndex.DomainAvailable(domain)){
-            this.domainNFT.CreateDomainAsset(account, seed);
+            this.domainNFT.CreateDomainAsset(account, domain);
             this.domainIndex.AddToIndex(domain, account.getAddress().toString());
             response.put("result", "Created");
             response.put("domain", domain);
-            response.put("account", account);
+            response.put("account", account.getAddress().toString());
         }else{
             response.put("result", "Domain Exists");
         }
@@ -108,7 +110,7 @@ public class EndpointHandler {
 
         Account account = createAlgoAccount.createNewAccount();
         JSONObject response = new JSONObject();
-        response.put("account", account.getAddress());
+        response.put("account", account.getAddress().toString());
         response.put("passphrase", account.toMnemonic());
         response.put("funding_link", "https://dispenser.testnet.aws.algodev.network?account=" + account.getAddress().toString());
         context.status(200);

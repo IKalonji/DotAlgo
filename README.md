@@ -24,7 +24,7 @@
     <a href="https://github.com/IKalonji/DotAlgo/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://www.youtube.com/watch?v=T4ouxpaDafk">View Demo</a>
+    <a href="https://youtu.be/GOsnMrG4cBE">View Demo</a>
     ·
     <a href="https://github.com/IKalonji/DotAlgo/issues">Report Bug</a>
     ·
@@ -149,7 +149,7 @@ Please install the below required software in order to run the project.
 
 [Video Demo]()
 
-[![DEMO]()]()
+[![DEMO](https://youtu.be/GOsnMrG4cBE)](https://youtu.be/GOsnMrG4cBE)
 
 _Please refer to the [Documentation](https://github.com/IKalonji/DotAlgo/blob/main/README.md)_
 
@@ -232,4 +232,4 @@ Project Link: [https://github.com/IKalonji/DotAlgo](https://github.com/IKalonji/
 [license-url]: https://github.com/IKalonji/DotAlgo/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/issa-kalonji-b301851ba/
-[product-screenshot]: images/dotAlgo.png
+[product-screenshot]: images/dotalgo-screenshot.png

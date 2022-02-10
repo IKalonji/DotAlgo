@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         EndpointHandler handler = new EndpointHandler();
-        Javalin server = Javalin.create();
+        Javalin server = Javalin.create(javalinConfig -> {javalinConfig.enableCorsForAllOrigins();});
         server.post(handler.create, handler::CreateAlgoDomain);
         server.get(handler.update, handler::UpdateAlgoDomain);
         server.get(handler.resolve, handler::ResolveAlgoDomain);

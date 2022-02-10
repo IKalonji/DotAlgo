@@ -139,7 +139,7 @@ public class CreateDomainAsset {
         boolean defaultFrozen = false;
         String unitName = "DOTALGO";
         String assetName = domain;
-        String url = domain;
+        String url = "http://localhost:3000"+domain;
         String assetMetadataHash = MetadataHash(domain);
         Address manager = acct1.getAddress();
         Address reserve = acct1.getAddress();
