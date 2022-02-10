@@ -147,6 +147,15 @@ Please install the below required software in order to run the project.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+### Endpoints
+Create account
+Create domain name asset (NFT)
+Resolve domain name
+Update domain name
+Get all domains
+
+ADDITIONAL ENDPOINTS WILL BE PROVIDED FOR ALPHA RELEASE
+
 [Video Demo]()
 
 [![DEMO](https://youtu.be/GOsnMrG4cBE)](https://youtu.be/GOsnMrG4cBE)
