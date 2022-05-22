@@ -2,14 +2,17 @@ import java.util.HashMap;
 
 public class Indexer {
 
-    private HashMap<String, String> index;
+    private HashMap<String, HashMap> index;
 
     public Indexer(){
         this.index = new HashMap();
     }
 
-    public void AddToIndex(String domain, String account){
-        this.index.put(domain, account);
+    public void AddToIndex(String domain, String account, String cid){
+        HashMap<String, String> domainMetadata = new HashMap<>();
+        domainMetadata.put("account", account);
+        domainMetadata.put("cid", cid);
+        this.index.put(domain, domainMetadata);
     }
 
     public boolean DomainAvailable(String domain){
@@ -20,14 +23,15 @@ public class Indexer {
     }
 
     public void UpdateDomain(String oldDomain, String newDomain){
-        String account = this.index.get(oldDomain);
+
+        HashMap domainMetadata = this.index.get(oldDomain);
         this.index.remove(oldDomain);
-        this.index.put(newDomain, account);
+        this.index.put(newDomain, domainMetadata);
     }
 
-    public String ResolveDomain(String domain){
+    public HashMap ResolveDomain(String domain){
         return this.index.get(domain);
     }
 
-    public HashMap<String, String> getIndexes(){ return this.index; }
+    public HashMap<String, HashMap> getIndexes(){ return this.index; }
 }

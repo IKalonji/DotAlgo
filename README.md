@@ -19,12 +19,12 @@
   <h3 align="center">dotAlgo</h3>
 
   <p align="center">
-    Developer tool to create, index and resolve human-readable Algorand addresses. 
+    Developer tool to create, index and resolve human-readable Algorand addresses with linked avatar on Web3 Storage. 
     <br />
     <a href="https://github.com/IKalonji/DotAlgo/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://youtu.be/GOsnMrG4cBE">View Demo</a>
+    <a href="https://youtu.be/hkJ0wgO6Hc4">View Demo</a>
     ·
     <a href="https://github.com/IKalonji/DotAlgo/issues">Report Bug</a>
     ·
@@ -72,6 +72,7 @@ Making it easier for users to use the address domain extenstions instead of long
 
 Here's why:
 * Simple to remember, on the go. 
+* Linked wallet avatar.
 * Address domains are created as NFT's which will enable trade of these domains
 * One call address resolution.
 
@@ -83,6 +84,7 @@ Here's why:
 
 * [Algorand JAVA SDK](https://developer.algorand.org/docs/sdks/java/)
 * [JAVA](https://www.java.com)
+* [Web3Storage](https://web3.storage/)
 * [Angular](https://angular.io/)
 * [Algorand Sandbox](https://github.com/algorand/sandbox)
 * [IntelliJ Community](https://www.jetbrains.com/idea/download/)
@@ -158,7 +160,7 @@ ADDITIONAL ENDPOINTS WILL BE PROVIDED FOR ALPHA RELEASE
 
 [Video Demo](https://www.youtube.com/watch?v=GOsnMrG4cBE)
 
-[![DEMO](https://img.youtube.com/vi/GOsnMrG4cBE/0.jpg)](https://www.youtube.com/watch?v=GOsnMrG4cBE)
+[![DEMO](https://img.youtube.com/vi/hkJ0wgO6Hc4/0.jpg)](https://youtu.be/hkJ0wgO6Hc4)
 
 
 _Please refer to the [Documentation](https://github.com/IKalonji/DotAlgo/blob/main/README.md)_
@@ -223,6 +225,7 @@ Project Link: [https://github.com/IKalonji/DotAlgo](https://github.com/IKalonji/
 
 * [Algorand](https://www.algorand.com/)
 * [Gitcoin](https://gitcoin.co/)
+* [Web3Storage](https://web3.storage/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

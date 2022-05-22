@@ -45,17 +45,20 @@ public class EndpointHandler {
         JSONParser parser = new JSONParser();
         JSONObject jsonBody =(JSONObject) parser.parse(body);
         String seed = (String) jsonBody.get("account_mneumonic");
+        String cid = (String) jsonBody.get("avatar");
         System.out.println(seed);
+        System.out.println(cid);
         Account account = this.createAlgoAccount.createAccountFromSeed(seed);
 
         JSONObject response = new JSONObject();
 
         if (this.domainIndex.DomainAvailable(domain)){
             this.domainNFT.CreateDomainAsset(account, domain);
-            this.domainIndex.AddToIndex(domain, account.getAddress().toString());
+            this.domainIndex.AddToIndex(domain, account.getAddress().toString(), cid);
             response.put("result", "Created");
             response.put("domain", domain);
             response.put("account", account.getAddress().toString());
+            response.put("avatar", cid);
         }else{
             response.put("result", "Domain Exists");
         }
@@ -96,7 +99,7 @@ public class EndpointHandler {
     public void GetAllAlgoDomains(Context context){
         JSONObject response = new JSONObject();
         List accountList = new ArrayList<>();
-        HashMap<String, String> indexes = this.domainIndex.getIndexes();
+        HashMap<String, HashMap> indexes = this.domainIndex.getIndexes();
         for (Map.Entry mapElement : indexes.entrySet()){
             accountList.add(mapElement);
         }
