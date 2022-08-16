@@ -1,0 +1,89 @@
+<div style="text-align: end;">
+    <label style="font-size: large; padding:10px"> Current liveness score: {{liveness}}</label>
+</div>
+<mat-stepper [linear]="true">
+    <mat-step>
+        <ng-template matStepLabel>Create/Import Wallet</ng-template>
+        <div >
+            <div>
+                <span>
+                    <mat-card>
+                        Create new wallet address
+                    </mat-card>
+                    <mat-card>
+                        Import wallet from mneumonic
+                    </mat-card>
+                </span>
+            </div>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext color="primary">Next</button>
+            </div>
+        </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>OTP validation</ng-template>
+        <div></div>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext color="primary">Next</button>
+          </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Social login</ng-template>
+        <div>
+            <button mat-button (click)="login()">
+                <label>Login with a social profile</label>
+            </button>
+        </div>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext color="primary">Next</button>
+          </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Liveness image capture</ng-template>
+        <div >
+            <div style="text-align: center; color: rgb(255, 255, 255);">
+  
+                <h1>Captue liveness image</h1>
+
+                <button mat-button (click)="openCamera(true)">Start Camera</button>
+              
+                <div *ngIf="showCamera">
+                    <div>
+                        <webcam [trigger]="triggerObservable" (imageCapture)="handleImage($event)"></webcam>
+                        <br>
+                        <button mat-button (click)="triggerSnapshot();">Capture</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext color="primary" id="next">Next</button>
+          </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Uplaod document</ng-template>
+        <div >
+            <div style="text-align: center; color: rgb(255, 255, 255);">
+                <label>Upload government issued ID document</label>
+                <br>
+                <br>
+                <input mat-input type="file">
+            </div>
+        </div>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext color="success">Next</button>
+          </div>
+    </mat-step> 
+    <mat-step>
+        <ng-template matStepLabel>Mint dotAlgo-DID</ng-template>
+        <div ></div>
+        <div>
+            <button mat-button color="primary">Mint</button>
+          </div>
+    </mat-step>
+</mat-stepper>
