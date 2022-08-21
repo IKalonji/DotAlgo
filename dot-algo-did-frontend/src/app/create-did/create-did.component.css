@@ -1,0 +1,37 @@
+.success {
+    color: yellowgreen;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: end;
+}
+
+button {
+    box-shadow: 0 0 4px 0 black;
+    margin: 5px 0 0 5px;
+    min-width: 100px;
+}
+
+input[type=file], input[type=text] {
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    font-size: 14px;
+    background-color: darkgray;
+    box-shadow: 0 0 4px 0 black;
+    min-width: 250px;
+}
+
+input[type=text]:focus, input[type=file]:focus {
+    outline: none;
+    background-color: white;
+}
+
+.btn-250 {
+    min-width: 250px;
+}

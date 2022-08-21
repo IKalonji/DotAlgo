@@ -4,49 +4,49 @@
 <mat-stepper [linear]="true">
     <mat-step>
         <ng-template matStepLabel>Create/Import Wallet</ng-template>
-        <div >
-            <div>
-                <span>
-                    <mat-card>
-                        Create new wallet address
-                    </mat-card>
-                    <mat-card>
-                        Import wallet from mneumonic
-                    </mat-card>
-                </span>
+        <mat-card>
+            <div class="center">
+                <button class="btn-250" mat-button>Create new wallet address</button>
+                <button class="btn-250" mat-button>Import wallet from mneumonic</button>
             </div>
-            <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext color="primary">Next</button>
-            </div>
+        </mat-card>
+        <div class="right">
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext color="primary">Next</button>
         </div>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>OTP validation</ng-template>
-        <div></div>
-        <div>
+        <mat-card>
+            <div class="center">
+                <input mat-input type="text" placeholder="OTP..." />
+            </div>
+        </mat-card>
+        <div class="right">
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext color="primary">Next</button>
           </div>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Social login</ng-template>
-        <div>
-            <button mat-button (click)="login()">
-                <label>Login with a social profile</label>
-            </button>
-        </div>
-        <div>
+        <mat-card>
+            <div class="center">
+                <button mat-button (click)="login()">
+                    <label>Login with a social profile</label>
+                </button>
+            </div>
+        </mat-card>
+        <div class="right">
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext color="primary">Next</button>
           </div>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Liveness image capture</ng-template>
-        <div >
-            <div style="text-align: center; color: rgb(255, 255, 255);">
+        <mat-card >
+            <div class="center">
   
-                <h1>Captue liveness image</h1>
+                <h2>Capture liveness image</h2>
 
                 <button mat-button (click)="openCamera(true)">Start Camera</button>
               
@@ -58,32 +58,37 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div>
+        </mat-card>
+        <div class="right">
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button matStepperNext color="primary" id="next">Next</button>
           </div>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Uplaod document</ng-template>
-        <div >
-            <div style="text-align: center; color: rgb(255, 255, 255);">
-                <label>Upload government issued ID document</label>
-                <br>
-                <br>
+        <mat-card>
+            <div class="center">
+                <h2>Upload government issued ID document</h2>
                 <input mat-input type="file">
             </div>
-        </div>
-        <div>
+        </mat-card>
+        <div class="right">
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext color="success">Next</button>
+            <button mat-button matStepperNext  color="primary">Next</button>
           </div>
     </mat-step> 
     <mat-step>
         <ng-template matStepLabel>Mint dotAlgo-DID</ng-template>
-        <div ></div>
-        <div>
+        <mat-card>
+            <div class="center" >
+                <br>
+                <h2 class="success">All steps completed...</h2>
+                <br>
+            </div>
+        </mat-card>
+        <div class="right">
+            <button mat-button matStepperPrevious>Back</button>
             <button mat-button color="primary">Mint</button>
-          </div>
+        </div>
     </mat-step>
 </mat-stepper>
