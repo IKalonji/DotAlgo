@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CreateDidComponent } from '../create-did/create-did.component';
-import { ComponentDisplayService } from '../services/component-display.service';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +9,7 @@ import { ComponentDisplayService } from '../services/component-display.service';
 export class HomeComponent implements OnInit {
 
 
-  constructor(private displayService: ComponentDisplayService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

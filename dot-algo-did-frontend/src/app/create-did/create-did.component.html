@@ -1,13 +1,14 @@
-<div style="text-align: end;">
-    <label style="font-size: large; padding:10px"> Current liveness score: {{liveness}}</label>
+<div style="text-align: end; height: 50px; padding: 10px;">
+    <br>
+    <label style="font-size: 30px; color: green; font-weight: 800;"> Current liveness score: {{liveness}}</label>
 </div>
-<mat-stepper [linear]="true">
+<mat-stepper [linear]="true" class="stepper">
     <mat-step>
         <ng-template matStepLabel>Create/Import Wallet</ng-template>
         <mat-card>
             <div class="center">
-                <button class="btn-250" mat-button>Create new wallet address</button>
-                <button class="btn-250" mat-button>Import wallet from mneumonic</button>
+                <button class="btn-250" mat-button (click)="createWallet('new')">Create new wallet address</button>
+                <button class="btn-250" mat-button (click)="createWallet('existing')">Import wallet from mneumonic</button>
             </div>
         </mat-card>
         <div class="right">
@@ -19,7 +20,20 @@
         <ng-template matStepLabel>OTP validation</ng-template>
         <mat-card>
             <div class="center">
-                <input mat-input type="text" placeholder="OTP..." />
+                <p>Enter your email address and click send to receive your OTP</p>
+                <span>
+                    <input mat-input type="text" [(ngModel)]="otpEmail" placeholder="email...">
+                    <button mat-button>Send</button>
+                </span>
+                <br>
+                <br>
+                <p>
+                    Verify the OTP sent to your email address and click Verify to continue.
+                </p>
+                <span>
+                    <input mat-input type="text" placeholder="OTP..." [(ngModel)]="otp"/>
+                    <button mat-button>Verify</button>
+                </span>
             </div>
         </mat-card>
         <div class="right">
@@ -38,8 +52,8 @@
         </mat-card>
         <div class="right">
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext color="primary">Next</button>
-          </div>
+            <button mat-button matStepperNext (click)="logout()">Next</button>
+        </div>
     </mat-step>
     <mat-step>
         <ng-template matStepLabel>Liveness image capture</ng-template>
@@ -61,7 +75,7 @@
         </mat-card>
         <div class="right">
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext color="primary" id="next">Next</button>
+            <button mat-button matStepperNext id="imageCaptureCompleted">Next</button>
           </div>
     </mat-step>
     <mat-step>
@@ -69,12 +83,12 @@
         <mat-card>
             <div class="center">
                 <h2>Upload government issued ID document</h2>
-                <input mat-input type="file">
+                <input mat-input type="file" (change)="docSubmitted()">
             </div>
         </mat-card>
         <div class="right">
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext  color="primary">Next</button>
+            <button mat-button matStepperNext>Next</button>
           </div>
     </mat-step> 
     <mat-step>
@@ -92,3 +106,9 @@
         </div>
     </mat-step>
 </mat-stepper>
+
+<style>
+    .stepper{
+        height: 70%;
+    }
+</style>

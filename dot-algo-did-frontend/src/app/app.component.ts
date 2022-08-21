@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ComponentDisplayService } from './services/component-display.service';
 
 @Component({
   selector: 'app-root',

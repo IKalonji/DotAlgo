@@ -26,6 +26,10 @@ export class CreateDidComponent implements OnInit, OnChanges {
 
   @Output() loginStatusEvent = new EventEmitter<boolean>();
 
+  otpEmail: string = "";
+
+  otp: string = "";
+
   web3auth: Web3Auth | null = null;
 
   isLoggedIn = false;
@@ -98,7 +102,8 @@ export class CreateDidComponent implements OnInit, OnChanges {
   public triggerSnapshot(): void {
     this.trigger.next();
     this.openCamera(false);
-    document.getElementById('next')?.click()
+    //Increase liveness
+    document.getElementById('imageCaptureCompleted')?.click()
   }
 
   /*------------------------------------------
@@ -157,7 +162,11 @@ export class CreateDidComponent implements OnInit, OnChanges {
       return;
     }
     const web3authProvider = await this.web3auth.connect();
-    if (web3authProvider) this.provider = getWalletProvider(this.chain, web3authProvider, this.uiConsole);
+    if (web3authProvider) {
+      this.provider = getWalletProvider(this.chain, web3authProvider, this.uiConsole);
+      console.log("Provider", this.provider);
+      //once logged in increment liveness
+    };
   }
 
   async logout() {
@@ -212,5 +221,39 @@ export class CreateDidComponent implements OnInit, OnChanges {
     if (el) {
       el.innerHTML = JSON.stringify(args || {}, null, 2);
     }
+  }
+
+  createWallet(type: string){
+    if(type == "new"){
+      console.log("create new wallet");
+      //call create new wallet api service
+      //once wallet is created increase the liveness score
+    }else{
+      alert("Import wallet disabled for security reason since this is a demo app.")
+    }
+  }
+
+  sendEmail(){
+    //send an email to the python send email service
+    console.log("send email");
+  }
+
+  verifyOTP(){
+    //verify otp returned by the python send email service
+    //if validated increase the liveness score
+    console.log("verifying otp");
+  }
+
+  docSubmitted(){
+    //increase the liveness score
+    console.log("doc submitted");
+  }
+
+  mint(){
+    //mint the soulbound token to the user
+    console.log("minting soulbound token");
+    
+    // display confetti
+    // view on Algoscan
   }
 }
