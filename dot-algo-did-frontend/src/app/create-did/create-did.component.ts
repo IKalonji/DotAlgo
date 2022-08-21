@@ -213,5 +213,4 @@ export class CreateDidComponent implements OnInit, OnChanges {
       el.innerHTML = JSON.stringify(args || {}, null, 2);
     }
   }
-
 }
