@@ -67,7 +67,7 @@ Read the ARC [here](https://github.com/IKalonji/DotAlgo/blob/main/ARC.md)
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/IKalonji/DotAlgo/blob/main/README.md)
+<!-- [![Product Name Screen Shot][product-screenshot]](https://github.com/IKalonji/DotAlgo/blob/main/README.md) -->
 
 dotAglo-DID is a human-readable domain creator linked to a Soulbound non-transferable Identity token. The goal is to allow users to self identify and have their identity linked to the NFT. Users can then use the Soulbound token to identify or authenticate themselves in other dapps. 
 
