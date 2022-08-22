@@ -17,6 +17,7 @@ public class EndpointHandler {
     public final String allDomains = "/all";
     public final String available = "/available/{domain}";
     public final String account = "/account";
+    public final String otp = "/send-otp";
 
     private Indexer domainIndex;
     private CreateDomainAsset domainNFT;
@@ -45,7 +46,7 @@ public class EndpointHandler {
         JSONParser parser = new JSONParser();
         JSONObject jsonBody =(JSONObject) parser.parse(body);
         String seed = (String) jsonBody.get("account_mneumonic");
-        String cid = (String) jsonBody.get("avatar");
+        String cid = (String) jsonBody.get("cid");
         System.out.println(seed);
         System.out.println(cid);
         Account account = this.createAlgoAccount.createAccountFromSeed(seed);
@@ -53,12 +54,12 @@ public class EndpointHandler {
         JSONObject response = new JSONObject();
 
         if (this.domainIndex.DomainAvailable(domain)){
-            this.domainNFT.CreateDomainAsset(account, domain);
+            this.domainNFT.CreateDomainAssetMethod(account, cid);
             this.domainIndex.AddToIndex(domain, account.getAddress().toString(), cid);
             response.put("result", "Created");
             response.put("domain", domain);
             response.put("account", account.getAddress().toString());
-            response.put("avatar", cid);
+            response.put("cid", cid);
         }else{
             response.put("result", "Domain Exists");
         }

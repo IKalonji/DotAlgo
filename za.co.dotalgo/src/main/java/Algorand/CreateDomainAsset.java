@@ -114,15 +114,19 @@ public class CreateDomainAsset {
         try {
             // Msgpack encode the signed transaction
             byte[] encodedTxBytes = Encoder.encodeToMsgPack(signedTx);
-            String id = client.RawTransaction().rawtxn(encodedTxBytes).execute().body().txId;
-            ;
+            Response<PostTransactionsResponse> rawtxresponse = client.RawTransaction().rawtxn(encodedTxBytes).execute();
+            if (!rawtxresponse.isSuccessful()) {
+                throw new Exception(rawtxresponse.message());
+            }
+            String id = rawtxresponse.body().txId;
             return (id);
         } catch (ApiException e) {
             throw (e);
         }
     }
 
-    public void CreateDomainAsset(Account account, String domain) throws Exception {
+    public void CreateDomainAssetMethod(Account account, String cid) throws Exception {
+        System.out.println("Client is null? " +client == null);
         if (client == null)
             this.client = connectToNetwork();
 
@@ -131,28 +135,39 @@ public class CreateDomainAsset {
 
         // CREATE ASSET
         // get changing network parameters for each transaction
-        TransactionParametersResponse params = client.TransactionParams().execute().body();
+        Response<TransactionParametersResponse> resp = client.TransactionParams().execute();
+        if(!resp.isSuccessful()){
+            throw new Exception(resp.message());
+        }
+        TransactionParametersResponse params = resp.body();
         params.fee = (long) 1000;
 
         // Create the Asset:
         BigInteger assetTotal = BigInteger.valueOf(1);
-        boolean defaultFrozen = false;
-        String unitName = "DOTALGO";
-        String assetName = domain;
-        String url = "http://localhost:3000"+domain;
-        String assetMetadataHash = MetadataHash(domain);
+        boolean defaultFrozen = true;
+        String unitName = "dotALGO";
+        String assetName = "ARC707 Souldbound Identifier";
+        String url = "https://ipfs.fleek.co/ipfs/"+cid;
+        String assetMetadataHash = MetadataHash(cid);
         Address manager = acct1.getAddress();
         Address reserve = acct1.getAddress();
-        Address freeze = acct1.getAddress();
-        Address clawback = acct1.getAddress();
         Integer decimals = 0;
         Transaction tx = Transaction.AssetCreateTransactionBuilder().sender(acct1.getAddress()).assetTotal(assetTotal)
-                .assetDecimals(decimals).assetUnitName(unitName).assetName(assetName).url(url)
-                .metadataHashUTF8(assetMetadataHash).manager(manager).reserve(reserve).freeze(freeze)
-                .defaultFrozen(defaultFrozen).clawback(clawback).suggestedParams(params).build();
+        .assetDecimals(decimals).assetUnitName(unitName).assetName(assetName).url(url)
+        .metadataHashUTF8(assetMetadataHash).manager(manager).reserve(reserve)
+        .defaultFrozen(defaultFrozen).suggestedParams(params).build();
+        
+        //Remove to ensure the token is soulbound
+        // Address freeze = acct1.getAddress();
+        // Address clawback = acct1.getAddress();
+        // Transaction tx = Transaction.AssetCreateTransactionBuilder().sender(acct1.getAddress()).assetTotal(assetTotal)
+        //         .assetDecimals(decimals).assetUnitName(unitName).assetName(assetName).url(url)
+        //         .metadataHashUTF8(assetMetadataHash).manager(manager).reserve(reserve).freeze(freeze)
+        //         .defaultFrozen(defaultFrozen).clawback(clawback).suggestedParams(params).build();
 
         // Sign the Transaction with creator account
         SignedTransaction signedTx = acct1.signTransaction(tx);
+        System.out.println("Signed tx: " + signedTx);
         Long assetID = null;
         try {
             String id = submitTransaction(signedTx);

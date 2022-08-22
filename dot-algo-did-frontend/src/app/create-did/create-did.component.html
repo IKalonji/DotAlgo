@@ -1,6 +1,9 @@
-<div style="text-align: end; height: 50px; padding: 10px;">
+<div style="text-align: end; height: 100px; padding: 10px;">
+    <br>
+    <label style="font-size: 30px; color: rgb(0, 0, 0); font-weight: 800;" *ngIf="algoAccount">Wallet: {{algoAccount}}</label>
     <br>
     <label style="font-size: 30px; color: green; font-weight: 800;"> Current liveness score: {{liveness}}</label>
+    <br>
 </div>
 <mat-stepper [linear]="true" class="stepper">
     <mat-step>
@@ -9,6 +12,12 @@
             <div class="center">
                 <button class="btn-250" mat-button (click)="createWallet('new')">Create new wallet address</button>
                 <button class="btn-250" mat-button (click)="createWallet('existing')">Import wallet from mneumonic</button>
+            </div>
+            <br>
+            <div class="center" *ngIf="algoAccount">
+                <p>Account: {{algoAccount}}</p>
+                <p>Mneumonic: {{mneumonic}}</p>
+                <p>Please fund your account before proceeding. <a href="https://dispenser.testnet.aws.algodev.network/" target="_blank">Click to fund</a></p>
             </div>
         </mat-card>
         <div class="right">
@@ -32,7 +41,7 @@
                 </p>
                 <span>
                     <input mat-input type="text" placeholder="OTP..." [(ngModel)]="otp"/>
-                    <button mat-button>Verify</button>
+                    <button mat-button (click)="verifyOTP()">Verify</button>
                 </span>
             </div>
         </mat-card>
@@ -96,13 +105,17 @@
         <mat-card>
             <div class="center" >
                 <br>
-                <h2 class="success">All steps completed...</h2>
+                <h2 class="success">Complete the steps by adding a dotAlgo domain and click MINT!...</h2>
+                <span><input type="text" [(ngModel)]="domain"><label>.algo</label></span>
                 <br>
+                <div *ngIf="mintedBool">
+                    <p>MINTED, view on <a href="https://testnet.algoexplorer.io/">Algo Explorer</a></p>
+                </div>
             </div>
         </mat-card>
         <div class="right">
             <button mat-button matStepperPrevious>Back</button>
-            <button mat-button color="primary">Mint</button>
+            <button mat-button color="primary" (click)="mint()">Mint</button>
         </div>
     </mat-step>
 </mat-stepper>

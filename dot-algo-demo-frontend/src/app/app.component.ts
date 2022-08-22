@@ -47,7 +47,7 @@ export class AppComponent {
       console.log(CID);
     }
     console.log(this.mnemonic)
-    this.http.post(this.url + "create/"+this.prefix+".algo", {account_mneumonic:this.mnemonic, avatar: CID}).subscribe(data => {
+    this.http.post(this.url + "create/"+this.prefix+".algo", {account_mneumonic:this.mnemonic, cid: CID}).subscribe(data => {
       let dataAsJson = JSON.stringify(data)
       let json = JSON.parse(dataAsJson)
       this.logToPage(dataAsJson);

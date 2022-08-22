@@ -10,6 +10,7 @@ import { Web3Auth } from "@web3auth/web3auth";
 import { CHAIN_CONFIG, CHAIN_CONFIG_TYPE } from "./../config/chains";
 import { WEB3AUTH_NETWORK_TYPE } from "./../config/web3auth-networks";
 import { getWalletProvider, IWalletProvider } from "./../services/wallet-provider";
+import { AlgorandService } from '../services/algorand.service';
 
 const clientId = "BKPxkCtfC9gZ5dj-eg-W6yb5Xfr3XkxHuGZl2o2Bn8gKQ7UYike9Dh6c-_LaXlUN77x0cBoPwcSx-IVm0llVsLA";
 
@@ -49,7 +50,23 @@ export class CreateDidComponent implements OnInit, OnChanges {
 
   liveness: number = 0;
 
-  constructor() { }
+  algoAccount: string = "";
+  mneumonic: string = "";
+
+  domain:string = "";
+  CID:any = "";
+
+  mintedBool: boolean = false;
+
+  data:any = {
+    wallet:false,
+    otpValidation:false,
+    socialLogin:false,
+    imageCapture:false,
+    document:false
+  }
+
+  constructor(private algoService:AlgorandService) { }
 
   ngOnInit(): void {
     const subscribeAuthEvents = (web3auth: Web3Auth) => {
@@ -104,6 +121,8 @@ export class CreateDidComponent implements OnInit, OnChanges {
     this.openCamera(false);
     //Increase liveness
     document.getElementById('imageCaptureCompleted')?.click()
+    this.liveness+=1;
+    this.data.image = true;
   }
 
   /*------------------------------------------
@@ -166,6 +185,8 @@ export class CreateDidComponent implements OnInit, OnChanges {
       this.provider = getWalletProvider(this.chain, web3authProvider, this.uiConsole);
       console.log("Provider", this.provider);
       //once logged in increment liveness
+      this.liveness+=1;
+      this.data.socialLogin = true;
     };
   }
 
@@ -227,7 +248,15 @@ export class CreateDidComponent implements OnInit, OnChanges {
     if(type == "new"){
       console.log("create new wallet");
       //call create new wallet api service
-      //once wallet is created increase the liveness score
+      this.algoService.generateAccount().subscribe( data => {
+        let response: any = data
+        this.algoAccount = response.account;
+        this.mneumonic = response.passphrase;
+        alert(`Wallet created: ${this.algoAccount}\nMneumonic: ${this.mneumonic}`);
+        //once wallet is created increase the liveness score
+        this.liveness += 1;
+        this.data.wallet = true;
+      })  
     }else{
       alert("Import wallet disabled for security reason since this is a demo app.")
     }
@@ -242,18 +271,39 @@ export class CreateDidComponent implements OnInit, OnChanges {
     //verify otp returned by the python send email service
     //if validated increase the liveness score
     console.log("verifying otp");
+    if(this.otp == "12345"){
+      alert("OTP Validated!")
+      this.liveness += 1;
+      this.data.otpValidation = true
+    }else{
+      alert("OTP invalid!")
+    }
   }
 
   docSubmitted(){
     //increase the liveness score
     console.log("doc submitted");
+    this.liveness+=1;
+    this.data.document = true;
   }
 
   mint(){
     //mint the soulbound token to the user
     console.log("minting soulbound token");
+
+    let cid = this.algoService.uploadToIPFS(this.data);
+
+    this.CID = "badfgh5411dh51df2g11ert5yg41"
+    console.log(this.CID);
+    this.algoService.createDID(this.domain,this.mneumonic,this.CID).subscribe(data =>{
+      let response: any = data;
+      if(response.result.toLowerCase() == "created"){
+        alert("DID created\nView on Algo Explorer: https://testnet.algoexplorer.io/")
+        this.mintedBool = true;
+      }else{
+        alert("Error while minting")
+      }
+    })
     
-    // display confetti
-    // view on Algoscan
   }
 }

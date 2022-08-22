@@ -18,6 +18,9 @@ import { CreateDidComponent } from './create-did/create-did.component';
 
 import { WebcamModule } from 'ngx-webcam';
 
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +37,8 @@ import { WebcamModule } from 'ngx-webcam';
     MatInputModule,
     MatCardModule,
     WebcamModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

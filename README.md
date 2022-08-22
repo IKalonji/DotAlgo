@@ -16,15 +16,15 @@
     <img src="images/dotAlgo.png" alt="Logo" width="120" height="120">
   </a>
 
-  <h3 align="center">dotAlgo</h3>
+  <h3 align="center">dotAlgo-DID</h3>
 
   <p align="center">
-    Developer tool to create, index and resolve human-readable Algorand addresses with linked avatar on Web3 Storage. 
+    Decentralized identity using Soulbound tokens (non-tranferrable tokens) on the Algorand blockchain, with IPFS metadata storage. 
     <br />
     <a href="https://github.com/IKalonji/DotAlgo/blob/main/README.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://youtu.be/hkJ0wgO6Hc4">View Demo</a>
+    <a href="https://youtu.be/7WY9UFRaUEM">View Demo</a>
     ·
     <a href="https://github.com/IKalonji/DotAlgo/issues">Report Bug</a>
     ·
@@ -60,21 +60,23 @@
   </ol>
 </details>
 
+## ARC
 
+Read the ARC [here](https://github.com/IKalonji/DotAlgo/blob/main/ARC.md)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 [![Product Name Screen Shot][product-screenshot]](https://github.com/IKalonji/DotAlgo/blob/main/README.md)
 
-dotAglo is a human-readable domain creator, indexer and resolver for Algorand accounts built for developers to easily integrate into their applications.
-Making it easier for users to use the address domain extenstions instead of long and unreadable account addresses.
+dotAglo-DID is a human-readable domain creator linked to a Soulbound non-transferable Identity token. The goal is to allow users to self identify and have their identity linked to the NFT. Users can then use the Soulbound token to identify or authenticate themselves in other dapps. 
+
+The NFT's are stored in the user wallet and linked to a human readable domain which can be used for resolution.
 
 Here's why:
 * Simple to remember, on the go. 
-* Linked wallet avatar.
-* Address domains are created as NFT's which will enable trade of these domains
-* One call address resolution.
+* Linked wallet Soulbound token.
+* One call address resolution and identity resolution.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -151,16 +153,15 @@ Please install the below required software in order to run the project.
 
 ### Endpoints
 Create account
-Create domain name asset (NFT)
+Create Soulbound asset (NFT)
 Resolve domain name
-Update domain name
-Get all domains
+
 
 ADDITIONAL ENDPOINTS WILL BE PROVIDED FOR ALPHA RELEASE
 
-[Video Demo](https://www.youtube.com/watch?v=GOsnMrG4cBE)
+[Video Demo](https://www.youtube.com/watch?v=7WY9UFRaUEM)
 
-[![DEMO](https://img.youtube.com/vi/hkJ0wgO6Hc4/0.jpg)](https://youtu.be/hkJ0wgO6Hc4)
+[![DEMO](https://img.youtube.com/vi/7WY9UFRaUEM/0.jpg)](https://youtu.be/7WY9UFRaUEM)
 
 
 _Please refer to the [Documentation](https://github.com/IKalonji/DotAlgo/blob/main/README.md)_
@@ -171,11 +172,8 @@ _Please refer to the [Documentation](https://github.com/IKalonji/DotAlgo/blob/ma
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Add transferrability
-- [ ] Add manager change support
 - [ ] Add multiple Algorand account support
 - [ ] Deploy to mainnet
-- [ ] Add Smart Contract for royalty support
 
 See the [open issues](https://github.com/IKalonji/DotAlgo/issues) for a full list of proposed features (and known issues).
 
@@ -245,4 +243,4 @@ Project Link: [https://github.com/IKalonji/DotAlgo](https://github.com/IKalonji/
 [license-url]: https://github.com/IKalonji/DotAlgo/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/issa-kalonji-b301851ba/
-[product-screenshot]: images/dotalgo-screenshot.png
+[product-screenshot]: https://img.youtube.com/vi/7WY9UFRaUEM/0.jpg
